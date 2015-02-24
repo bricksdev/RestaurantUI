@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>下达订单</title>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/warm-app-theme.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.structure.min.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.mobile.min.js"></script>
+</head>
+<body>
+
+
+	<div data-role="page">
+		<header data-role="header" data-position="fixed">
+
+			<h1>下达订单</h1>
+
+		</header>
+		<div data-role="main">
+			<form>
+				<ul data-role="listview">
+					<li class="ui-field-contain"><label for="textinput-disabled">预约</label>
+						<input name="textinput-disabled" id="textinput-disabled"
+						placeholder="Date input" value="" type="text"></li>
+					<li class="ui-field-contain"><label for="textinput-disabled">店铺</label>
+						<select name="select-native-fc" id="select-native-fc">
+							<option value="small">龙岗店</option>
+							<option value="medium">市民中心店</option>
+							<option value="large">世贸店</option>
+					</select></li>
+					<li class="ui-field-contain"><label for="textinput-disabled">席位</label>
+						<select name="select-native-fc" id="select-native-fc">
+							<option value="small">101</option>
+							<option value="medium">102</option>
+							<option value="large">103</option>
+					</select></li>
+
+					<li class="ui-body">
+						<fieldset class="ui-grid-a">
+							<div class="ui-block-a">
+								<button type="submit" class="ui-btn ui-corner-all ui-btn-a">取消</button>
+							</div>
+							<div class="ui-block-b">
+								<button type="submit" class="ui-btn ui-corner-all ui-btn-a"
+									onclick="javascript:confirm('预约到店需要先完成支付，确认支付？')">支付</button>
+							</div>
+						</fieldset>
+					</li>
+				</ul>
+			</form>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

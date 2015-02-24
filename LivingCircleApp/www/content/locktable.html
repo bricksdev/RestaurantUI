@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>座位选择</title>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/warm-app-theme.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.structure.min.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.mobile.min.js"></script>
+</head>
+<body>
+
+
+	<div data-role="page">
+		<header data-role="header" data-position="fixed">
+			<a href="javascript:;" onClick="javascript:history.back(-1);"
+				data-icon="carat-l" data-iconpos="left" data-transition="none">返回</a>
+			<h1>座位选择</h1>
+			<a href="createseat.html" data-icon="plus" class="ui-btn-right"
+				data-transition="none">创建</a>
+		</header>
+		<div data-role="main">
+			<ul data-role="listview" data-split-icon="check">
+				<li data-role="list-divider" data-theme="d">龙岗店<span
+					class="ui-li-count">2</span></li>
+				<li><a href="#"> <label
+						style="border-top-width: 0px; margin-top: 0px; border-bottom-width: 0px; margin-bottom: 0px; border-left-width: 0px; border-right-width: 0px;">
+
+							<h2>座号：101</h2>
+							<p>座位：2</p>
+							<p>位置：大堂</p>
+							<p>备注：免费WIFI</p>
+					</label>
+				</a> <a href="#purchase" data-rel="popup" data-position-to="window"
+					data-transition="pop">选择</a></li>
+				<li><a href="#"> <label
+						style="border-top-width: 0px; margin-top: 0px; border-bottom-width: 0px; margin-bottom: 0px; border-left-width: 0px; border-right-width: 0px;">
+
+							<h2>座号：102</h2>
+							<p>座位：6</p>
+							<p>位置：大堂</p>
+							<p>备注：免费WIFI</p>
+					</label>
+				</a> <a href="#purchase" data-rel="popup" data-position-to="window"
+					data-transition="pop">选择</a></li>
+			</ul>
+		</div>
+		<div data-role="popup" id="purchase" class="ui-content"
+			style="max-width: 340px; padding-bottom: 2em;">
+			<h3>是否确定席位?</h3>
+			<p>您正在确定席位101.</p>
+			<a href="#" data-rel="back"
+				class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">选择</a>
+			<a href="#" data-rel="back"
+				class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">取消</a>
+		</div>
+	</div>
+
+
+</body>
+</html>

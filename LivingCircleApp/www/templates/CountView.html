@@ -1,0 +1,90 @@
+
+<header data-role="header" data-position="fixed">
+
+	<h1>结算</h1>
+
+</header>
+<div data-role="main">
+
+	<form>
+		<ul data-role="listview" data-split-icon="carat-r">
+			<li data-role="list-divider" data-theme="d">未下单<span
+				class="ui-li-count">2</span></li>
+			<li><a href="#"> <label
+					style="border-top-width: 0px; margin-top: 0px; border-bottom-width: 0px; margin-bottom: 0px; border-left-width: 0px; border-right-width: 0px;">
+						<input id="SelectedSensors_0__Value"
+						name="SelectedSensors[0].Value" type="checkbox" value="true" />
+						<h2>Broken Bells</h2>
+						<p>Broken Bells</p>
+						<p class="ui-li-aside">
+							<label><strong>10分钟</strong></label> <label><strong>25</strong>元</label>
+							<label><strong>2</strong>份</label>
+						</p>
+
+				</label>
+			</a> <a href="prodetails.html" data-transition="none"></a></li>
+			<li><a href="#"> <label
+					style="border-top-width: 0px; margin-top: 0px; border-bottom-width: 0px; margin-bottom: 0px; border-left-width: 0px; border-right-width: 0px;">
+						<input id="SelectedSensors_0__Value"
+						name="SelectedSensors[0].Value" type="checkbox" value="true" />
+						<h2>Warning</h2>
+						<p>Hot Chip</p>
+						<p class="ui-li-aside">
+							<label><strong>15分钟</strong></label> <label><strong>35</strong>元</label>
+							<label><strong>1</strong>份</label>
+						</p>
+
+				</label>
+			</a> <a href="prodetails.html" data-transition="none"> </a></li>
+			<li data-role="list-divider" data-theme="d">待付款<span
+				class="ui-li-count">1</span></li>
+			<li><a href="#"> <label
+					style="border-top-width: 0px; margin-top: 0px; border-bottom-width: 0px; margin-bottom: 0px; border-left-width: 0px; border-right-width: 0px;">
+						<input id="SelectedSensors_0__Value"
+						name="SelectedSensors[0].Value" type="checkbox" value="true" />
+						<h2>3455667882</h2>
+						<p>座号：101</p>
+						<p>菜品：10</p>
+						<p class="ui-li-aside">
+
+							<label><strong>70</strong>元</label>
+
+						</p>
+				</label>
+			</a> <a href="orders.html" data-transition="none"> </a></li>
+			<li class="ui-body">
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#popupOrder" data-rel="popup" data-position-to="window"
+							class="ui-btn ui-corner-all " style="width: 85%"
+							data-transition="pop">下单</a>
+
+					</div>
+					<div class="ui-block-b">
+						<button type="submit" class="ui-btn ui-corner-all ">结帐</button>
+					</div>
+				</fieldset>
+			</li>
+		</ul>
+	</form>
+
+</div>
+<div data-role="popup" id="popupOrder" data-overlay-theme="b"
+	data-tolerance="15,15" class="ui-content">
+	<a href="#" data-rel="back"
+		class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+	<iframe src="order.html" seamless="" height="400" width="350"></iframe>
+</div>
+<footer id="foo1" data-role="footer" data-id="foo1" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#" id="btnHome" data-transition="none" >首页</a></li>
+			
+			<li><a href="#" id="btnCount" class="ui-btn-active" data-transition="none">结算</a></li>
+			<li><a href="#" id="btnService"  data-transition="none">服务台</a></li>
+			<li><a href="#" id="btnUser"  data-transition="none">个人信息</a></li>
+		</ul>
+	</div>
+
+</footer>
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>欢迎光临</title>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/warm-app-theme.min.css" />
+<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="css/jquery.mobile.structure.min.css">
+<link rel="stylesheet" href="css/listview-grid.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.mobile.min.js"></script>
+<script src="js/bricksjs.app.core.js"></script>
+<script type="text/javascript">
+
+	$('#mainPage').live('pagebeforecreate', function(event) {
+		var params = {};
+		RestaurantApp.send(params, "/index", function() {
+			window.location.href = "../content/discount.html";
+		});
+
+	});
+</script>
+</head>
+<body>
+
+	<div data-role="page" class="my-page">
+
+		<div data-role="header" data-position="fixed">
+			<h1>欢迎光临</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content" id="mainPage">
+			<ul data-role="listview">
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/apple.png" class="ui-li-thumb">
+						<h2>iOS 6.1</h2>
+						<p>Apple released iOS 6.1</p>
+						<p class="ui-li-aside">4折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>BlackBerry 10</h2>
+						<p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
+						<p class="ui-li-aside">4折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>WP 7.8</h2>
+						<p>Nokia rolls out WP 7.8 to Lumia 800</p>
+						<p class="ui-li-aside">4折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>Galaxy</h2>
+						<p>New Samsung Galaxy Express</p>
+						<p class="ui-li-aside">4折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>Nexus 7</h2>
+						<p>Rumours about new full HD Nexus 7</p>
+						<p class="ui-li-aside">8折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>Firefox OS</h2>
+						<p>ZTE to launch Firefox OS smartphone at MWC</p>
+						<p class="ui-li-aside">8折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>Tizen</h2>
+						<p>First Samsung phones with Tizen can be expected in 2013</p>
+						<p class="ui-li-aside">8折</p>
+				</a></li>
+				<li><a href="userinfo/login.html" data-transition="slide">
+						<img src="img/logo.png" class="ui-li-thumb">
+						<h2>Symbian</h2>
+						<p>Nokia confirms the end of Symbian</p>
+						<p class="ui-li-aside">8折</p>
+				</a></li>
+			</ul>
+
+		</div>
+		<!-- /content -->
+		<footer data-role="footer" data-id="foo1" data-position="fixed">
+			<h1>©2014 凌创技术出品</h1>
+		</footer>
+	</div>
+	<!-- /page -->
+
+</body>
+</html>

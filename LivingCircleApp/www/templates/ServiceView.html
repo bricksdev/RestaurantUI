@@ -1,0 +1,46 @@
+
+<header data-role="header" data-position="fixed">
+
+	<h1>服务台</h1>
+	<a href="userinfo.html" data-icon="user" data-iconpos="notext"
+		class="ui-btn-right" data-transition="none"></a>
+</header>
+<div data-role="main">
+	<ul data-role="listview">
+		<li data-icon="clock"><a href="appointment.html"
+			data-transition="none">消费预约</a></li>
+		<li data-icon="lock"><a href="locktable.html"
+			data-transition="none">席位安排</a></li>
+		<li data-icon="phone"><a href="#popupMenu" data-rel="popup"
+			data-transition="pop"> 呼叫服务</a></li>
+		<li data-icon="eye"><a href="historyorders.html"
+			data-transition="none">订单历史</a>
+		<li data-icon="calendar"><a href="historyappoints.html">预约历史</a>
+		</li>
+		<li data-icon="comment"><a href="discuss.html"
+			data-transition="none">消费评价</a></li>
+	</ul>
+</div>
+<div data-role="popup" id="popupMenu" data-dismissible="false">
+	<a href="#" data-rel="back"
+		class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right ">Close</a>
+	<ul data-role="listview" style="min-width: 210px;">
+		<li data-role="list-divider">呼叫服务</li>
+		<li><a href="#">点单</a></li>
+		<li><a href="#">结帐</a></li>
+		<li><a href="#">茶水</a></li>
+		<li><a href="#">其他</a></li>
+	</ul>
+</div>
+<footer id="foo1" data-role="footer" data-id="foo1" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#" id="btnHome" data-transition="none" >首页</a></li>
+			
+			<li><a href="#" id="btnCount" data-transition="none">结算</a></li>
+			<li><a href="#" id="btnService" class="ui-btn-active" data-transition="none">服务台</a></li>
+			<li><a href="#" id="btnUser"  data-transition="none">个人信息</a></li>
+		</ul>
+	</div>
+
+</footer>

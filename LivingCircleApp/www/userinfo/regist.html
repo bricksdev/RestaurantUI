@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>注册</title>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/warm-app-theme.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.structure.min.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.mobile.min.js"></script>
+<script src="../js/bricksjs.app.core.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("#regist").click(function(){
+        var params ={
+            username: $("#username").val(),
+            password: $("#password").val(),
+            repassword:$("#password-repeat").val(),
+            nicky: $("#nicky").val()
+        };
+        RestaurantApp.send(params,"/reg",function(){
+        	window.location.href="../content/discount.html";
+        });
+    });
+    
+});
+
+</script>
+</head>
+<body>
+
+	<!-- begin first page -->
+	<div data-role="page">
+		<header data-role="header" data-position="fixed">
+			<a href="javascript:;" onClick="javascript:history.back(-1);"
+				data-icon="carat-l" data-iconpos="left" data-transition="slide">返回</a>
+			<h1>注册美食之旅</h1>
+		</header>
+		<div id="errorDiv"></div>
+		<div data-role="main">
+
+			<ul data-role="listview">
+				<li class="ui-field-contain"><input type="text" name="username"
+					id="username" placeholder="名称" /></li>
+
+				<li class="ui-field-contain"><input type="password"
+					name="password" id="password" placeholder="密码" /></li>
+				<li class="ui-field-contain"><input type="password"
+					name="password-repeat" id="password-repeat" placeholder="确认密" /></li>
+				<li class="ui-field-contain"><input type="text" name="nicky"
+					id="nicky" placeholder="昵称" /></li>
+				<li class="ui-body">
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<a data-role="button" id="" href="../index.html">取消</a>
+						</div>
+						<div class="ui-block-b">
+							<a data-role="button" id="regist" href="#" data-transition="none">注册</a>
+						</div>
+					</fieldset>
+				</li>
+			</ul>
+
+		</div>
+		<footer data-role="footer" data-id="foo1" data-position="fixed">
+			<h1>©2014 凌创技术出品</h1>
+		</footer>
+	</div>
+	<!-- end first page -->
+</body>
+</html>

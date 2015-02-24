@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>产品发布</title>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/warm-app-theme.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.structure.min.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.mobile.min.js"></script>
+</head>
+<body>
+
+
+	<div data-role="page">
+		<header data-role="header" data-position="fixed">
+			<a href="javascript:;" onClick="javascript:history.back(-1);"
+				data-icon="carat-l" data-iconpos="left" data-transition="none">返回</a>
+			<h1>产品发布</h1>
+
+		</header>
+		<div data-role="main">
+			<form>
+				<ul data-role="listview">
+					<li class="ui-field-contain"><label for="textinput-disabled">产品名称</label>
+						<input name="textinput-disabled" id="textinput-disabled"
+						placeholder="Text input" value="" type="text"></li>
+					<li class="ui-field-contain"><label for="textinput-disabled">产品描述</label>
+						<textarea cols="40" rows="8" name="textarea" id="textarea"
+							placeholder="Text input"></textarea></li>
+					<li class="ui-field-contain"><label for="textinput-disabled">菜系</label>
+						<select name="select-native-fc" id="select-native-fc">
+							<option value="small">粤菜</option>
+							<option value="medium">湘菜</option>
+							<option value="large">川菜</option>
+					</select></li>
+					<li class="ui-field-contain"><label for="textinput-disabled">
+							价格</label> <input name="textinput-disabled" id="textinput-disabled"
+						placeholder="Text input" value="" type="text"></li>
+					<li class="ui-field-contain"><label for="select-native-fc">店
+							铺</label> <select name="select-native-fc" id="select-native-fc">
+							<option value="small">A店铺</option>
+							<option value="medium">B店铺</option>
+							<option value="large">C店铺</option>
+					</select></li>
+					<li class="ui-field-contain"><label for="textinput-disabled">制作描述</label>
+						<textarea cols="40" rows="8" name="textarea" id="textarea"
+							placeholder="Text input"></textarea></li>
+					<!-- <li class="ui-field-contain">
+					<label for="textinput-disabled">
+					图片</label><input name="textinput-disabled"  id="textinput-disabled"
+						placeholder="Text input" value="" type="hidden"> 
+						<a href="#"
+						class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-notext ui-btn-a ui-mini"></a>
+						</li> -->
+					<li class="ui-body">
+						<fieldset class="ui-grid-a">
+							<div class="ui-block-a">
+								<button type="submit" class="ui-btn ui-corner-all ui-btn-a">取消</button>
+							</div>
+							<div class="ui-block-b">
+								<button type="submit" class="ui-btn ui-corner-all ui-btn-a">发布</button>
+							</div>
+						</fieldset>
+					</li>
+				</ul>
+			</form>
+		</div>
+
+	</div>
+
+
+</body>
+</html>
