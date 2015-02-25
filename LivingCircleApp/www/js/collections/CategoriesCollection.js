@@ -4,7 +4,7 @@
 // Includes file dependencies
 define([
 	"jquery",
-	"backbone",
+	"Backbone",
 //	"localstorage",
 	"../models/CategoryModel"], function( $, Backbone, CategoryModel) {
 

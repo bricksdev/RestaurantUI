@@ -9,11 +9,11 @@
 <div data-role="main">
 
 	<ul data-role="listview" data-split-icon="plus">
-		
-		<% _.each(datas, function (data) { %>
+
+		<% _.each(models, function (data) { %>
  
 <li><a href="#" class="btnProductDetail"> 
-<img src="http://localhost:8099/product/images?id=<%=data.picture %>"> 
+<img src="http://localhost:8099/product/images/<%=data.picture[0]%>"> 
 				<span>
 				<%=data.name %>
 				</span> 

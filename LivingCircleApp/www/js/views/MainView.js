@@ -35,7 +35,7 @@ define(['jquery', 'underscore', 'Backbone','./LoginView',"../models/Session", 't
             render:function () {
                 // Rendering a view from a template
                 this.$el.html(MainTemplate);
-              
+                
                 return this;
             },
 

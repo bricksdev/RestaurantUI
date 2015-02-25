@@ -70,21 +70,39 @@
                     // Appending the view to the DOM
                     containerViews.pageContainer.append(view.el);
                     // Rendering the view
-                    view.render();
-
-                    if (!$.mobile.firstPage) {
-                        // Adding data-role with page value
-                        view.$el.attr('data-role', 'page');
-                        // First time initialization
-                        if (!$.mobile.autoInitializePage) $.mobile.initializePage();
-                    } else {
-                        // Changing page
-                        $.mobile.changePage(view.$el, $.extend({
-                            role:'page',
-                            changeHash:false,
-                            pageContainer:containerViews.pageContainer
-                        }, options));
+                    if(view.renderDatas){
+                    view.renderDatas(function(){
+                    	if (!$.mobile.firstPage) {
+                            // Adding data-role with page value
+                            view.$el.attr('data-role', 'page');
+                            // First time initialization
+                            if (!$.mobile.autoInitializePage) $.mobile.initializePage();
+                        } else {
+                            // Changing page
+                            $.mobile.changePage(view.$el, $.extend({
+                                role:'page',
+                                changeHash:false,
+                                pageContainer:containerViews.pageContainer
+                            }, options));
+                        }
+                    });
+                    }else{
+                    	view.render();
+                    	if (!$.mobile.firstPage) {
+                            // Adding data-role with page value
+                            view.$el.attr('data-role', 'page');
+                            // First time initialization
+                            if (!$.mobile.autoInitializePage) $.mobile.initializePage();
+                        } else {
+                            // Changing page
+                            $.mobile.changePage(view.$el, $.extend({
+                                role:'page',
+                                changeHash:false,
+                                pageContainer:containerViews.pageContainer
+                            }, options));
+                        }
                     }
+                    
                 },
 
                 /**
