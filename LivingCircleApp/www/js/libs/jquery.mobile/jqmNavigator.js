@@ -69,23 +69,23 @@
                     containerViews.views.push(view);
                     // Appending the view to the DOM
                     containerViews.pageContainer.append(view.el);
-                    // Rendering the view
+                    // Rendering the view // 修改当前逻辑上如果存在数据响应的情况，添加相应的回调处理
                     if(view.renderDatas){
-                    view.renderDatas(function(){
-                    	if (!$.mobile.firstPage) {
-                            // Adding data-role with page value
-                            view.$el.attr('data-role', 'page');
-                            // First time initialization
-                            if (!$.mobile.autoInitializePage) $.mobile.initializePage();
-                        } else {
-                            // Changing page
-                            $.mobile.changePage(view.$el, $.extend({
-                                role:'page',
-                                changeHash:false,
-                                pageContainer:containerViews.pageContainer
-                            }, options));
-                        }
-                    });
+                    	view.renderDatas(function(){
+	                    	if (!$.mobile.firstPage) {
+	                            // Adding data-role with page value
+	                            view.$el.attr('data-role', 'page');
+	                            // First time initialization
+	                            if (!$.mobile.autoInitializePage) $.mobile.initializePage();
+	                        } else {
+	                            // Changing page
+	                            $.mobile.changePage(view.$el, $.extend({
+	                                role:'page',
+	                                changeHash:false,
+	                                pageContainer:containerViews.pageContainer
+	                            }, options));
+	                        }
+	                    });
                     }else{
                     	view.render();
                     	if (!$.mobile.firstPage) {

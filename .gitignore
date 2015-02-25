@@ -1,5 +1,6 @@
 #eclipse
 .metadata
+RemoteSystemsTempFiles
 # Logs
 logs
 *.log
