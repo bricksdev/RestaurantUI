@@ -1,0 +1,15 @@
+<% if(data) { %>
+
+<a href="#" class="btnProductDetail"> 
+	<img src="http://localhost:8099/product/images/<%=data.picture && data.picture.length > 0?data.picture[0]:'error'%>"> 
+				<span>
+				<%=data.name %>
+				</span> 
+				<label><%=data.details %></label> 
+				<span class="ui-li-aside"> <label><strong><%=data.stoptime %></strong></label>
+					<label> <strong><%=data.discount %></strong>
+				</label>
+			</span>
+
+		</a> <a href="#" class="btnPlus" ></a>
+<% } %>

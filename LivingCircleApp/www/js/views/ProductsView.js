@@ -7,7 +7,7 @@
  */
 
 define([ 'jquery', 'underscore', 'Backbone', "Bricksutil",
-		"../models/Product", 'text!../../templates/ProductsView.html' ],
+		"../models/Product", 'text!templates/ProductsView.html' ],
 		function($, _, Backbone, Bricksutil, Product, ProductTemplate) {
 
 			var ProductView = Backbone.View.extend({

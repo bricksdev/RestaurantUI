@@ -8,15 +8,16 @@
 
 define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", './HomeView',
 		'./CountView', './ServiceView', './UserinfoView', "./ProductsView",
-		"../models/Product", 'text!../../templates/HomeView.html' ], function(
+		"./ProductItemsView",
+		"../models/Product", 'text!templates/HomeView.html' ], function(
 		$, _, Backbone, Bricksutil, HomeView, CountView, ServiceView,
-		UserinfoView, ProductsView, Product, HomeTemplate) {
+		UserinfoView, ProductsView,ProductItemsView, Product, HomeTemplate) {
 
 	var HomeView = Backbone.View.extend({
 
 		events : {
 			'pageshow' : 'this_pageshowHandler',
-			'click a.btnPlus' : 'btnPlus_clickHandler',
+
 			'click a.btnProductDetail' : 'btnProductDetail_clickHandler',
 			'click #btnPublish' : 'btnPublish_clickHandler',
 			'click #btnHome' : 'btnHome_clickHandler',
@@ -24,7 +25,7 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", './HomeView',
 			'click #btnService' : 'btnService_clickHandler',
 			'click #btnUser' : 'btnUser_clickHandler'
 		},
-
+		
 		initialize : function(options) {
 
 			// Creating opportunities collection
@@ -34,25 +35,32 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", './HomeView',
 			// ', LeadSource, (select DurationInMinutes from Events) FROM
 			// Opportunity WHERE IsClosed = false'
 			// }));
-			
+			this.productListItems = [];
 		},
-
-		renderDatas : function(callback) {
-			// Rendering a view from a template
+		productListItems:null,
+		renderDatas : function() {
+			$.mobile.loading( "show");
+			// Rendering a view from a template for datas
 			var that = this;
-			Product.getProducts(function(collection, response) {
+			Product.getProducts(function(model, response) {
+				console.log(model, response);
 				if (response.success) {
-					var datas = {
-						models : response.datas
-					};
-
-					 var temple = _. template(HomeTemplate);
-
-					// console.log(temple(datas));
-//					 datas = datas;
-					 that.$el.html(temple(datas));
+//					var datas = {
+//							models : response.datas
+//						};
+//					
+					console.log(response);
+					$.each(response.datas, function (index, opp) {
+						var li = new ProductItemsView({model:model, data: opp}).render();
+						that.productListItems.push(li);
+                    });
+                    
+					
+                    this.$('#productItems').html(_.pluck(that.productListItems, 'el')).listview("refresh");
+                    $.mobile.loading("hide")
+					 
 					Bricksutil.displayMessage("SUCCESS", "加载数据成功");
-					callback();
+					
 				} else {
 					Bricksutil.displayMessage("ERROR", response.message);
 				}
@@ -60,29 +68,20 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", './HomeView',
 			return this;
 		},
 		render : function(){
-			var temple = _. template(HomeTemplate);
-			this.$el.html(temple());
+//			var temple = _. template(HomeTemplate);
+			this.$el.html(HomeTemplate);
 			return this;
 		},
 
 		firstShow : true,
 
 		this_pageshowHandler : function(event) {
-			if (this.firstShow) {
-				// var that = this;
-				// Product.getProducts(function(collection, response){
-				// var datas = {models:response};
-				//                		
-				// var temple = _.template(HomeTemplate);
-				//                		
-				// // console.log(temple(datas));
-				// that.$el.html(temple(datas));
-				// // $.mobile.loading( "hidden");
-				// });
-				//                    
+			 if (this.firstShow) {
+                 // Loading productitems
+                 this.renderDatas();
 
-				this.firstShow = false;
-			}
+                 this.firstShow = false;
+             }
 			// $.mobile.loading( "show");
 		},
 
@@ -92,13 +91,7 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", './HomeView',
 
 		},
 
-		btnPlus_clickHandler : function(event) {
-			console.log(event);
-
-			// var opportunity = $(event.currentTarget).jqmData('model');
-			// $.mobile.jqmNavigator.pushView(new
-			// OpportunityView({model:opportunity}));
-		},
+		
 		btnProductDetail_clickHandler : function(event) {
 			console.log(event);
 			// var opportunity = $(event.currentTarget).jqmData('model');
@@ -114,8 +107,9 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", './HomeView',
 			$.mobile.jqmNavigator.pushView(new CountView());
 		},
 		btnService_clickHandler : function(event) {
-
-			$.mobile.jqmNavigator.pushView(new ServiceView());
+			var serviceView = new ServiceView();
+			serviceView.homeView(this);
+			$.mobile.jqmNavigator.pushView(serviceView);
 		},
 		btnUser_clickHandler : function(event) {
 

@@ -33,7 +33,21 @@ require.config({
         datepicker:"js/libs/jquery.mobile.datepicker",
         // js date ui
         datepickerui:'js/libs/jquery.ui.datepicker'
+        // home pages
+//        MainView:"js/views/MainView",
+//        HomeView:"js/views/HomeView",
+//        CountView:"js/views/CountView",
+//        ServiceView:"js/views/ServiceView",
+//        UserinfoView:"js/views/UserinfoView"
+        
     },
+//    bundles: {
+//        MainView: ['main', 'util', 'text', 'text!template.html'],
+//        HomeView: ['main', 'util', 'text', 'text!template.html'],
+//        CountView:['main', 'util', 'text', 'text!template.html']",
+//        ServiceView:['main', 'util', 'text', 'text!template.html'],
+//        UserinfoView:['main', 'util', 'text', 'text!template.html']
+//    },
     shim:{
         Backbone:{
             deps:['underscore', 'jquery'],
@@ -62,9 +76,44 @@ require.config({
         datepicker:{
         	deps:['datepickerui'],
         	exports:"datepicker"
+        },
+        datepicker:{
+        	deps:['datepickerui'],
+        	exports:"datepicker"
+        },
+        datepicker:{
+        	deps:['datepickerui'],
+        	exports:"datepicker"
+        },
+        datepicker:{
+        	deps:['datepickerui'],
+        	exports:"datepicker"
+        },
+        datepicker:{
+        	deps:['datepickerui'],
+        	exports:"datepicker"
+        },
+        datepicker:{
+        	deps:['datepickerui'],
+        	exports:"datepicker"
         }
+//        MainView:{
+//        	exports:"MainView"
+//        },
+//        HomeView:{
+//        	exports:"HomeView"
+//        },
+//        CountView:{
+//        	exports:"CountView"
+//        },
+//        ServiceView:{
+//        	exports:"ServiceView"
+//        },
+//        UserinfoView:{
+//        	exports:"UserinfoView"
+//        }
     }
-    ,templates: '../templates'
+    ,templates: '../../templates'
     ,urlArgs: "bust=" + (new Date()).getTime()
 });
 
@@ -78,6 +127,7 @@ require(['domReady', 'js/views/MainView', 'js/views/HomeView','js/models/Session
                 // Hiding splash screen when app is loaded
                 if (desktop !== true)
                     cordova.exec(null, null, "SplashScreen", "hide", []);
+                
                 Session.getAuth(function(collection, response){
                 	if(response.auth){
                 		// Pushing HomeView

@@ -8,25 +8,9 @@
 </header>
 <div data-role="main">
 
-	<ul data-role="listview" data-split-icon="plus">
+	<ul id="productItems" data-role="listview" data-split-icon="plus">
 
-		<% _.each(models, function (data) { %>
- 
-<li><a href="#" class="btnProductDetail"> 
-<img src="http://localhost:8099/product/images/<%=data.picture[0]%>"> 
-				<span>
-				<%=data.name %>
-				</span> 
-				<label><%=data.details %></label> 
-				<span class="ui-li-aside"> <label><strong><%=data.stoptime %></strong></label>
-					<label> <strong><%=data.discount %></strong>
-				</label>
-			</span>
-
-		</a> <a href="#" class="btnPlus" ></a></li>
-<% }); %>
-
-		<li><a href="#" class="btnProductDetail"> <img
+	<!-- 	<li><a href="#" class="btnProductDetail"> <img
 				src="../img/logo.png"> <span>Broken Bells</span> <label>Broken
 					Bells</label> <span class="ui-li-aside"> <label><strong>2014-12-30</strong></label>
 					<label> <strong>18:00</strong>
@@ -47,7 +31,7 @@
 				<span class="ui-li-aside"> <label><strong>2014-12-30</strong></label>
 					<label> <strong>18:00</strong>
 				</label>
-			</span></a> <a href="#" class="btnPlus"></a></li>
+			</span></a> <a href="#" class="btnPlus"></a></li> -->
 	</ul>
 </div>
 <footer id="foo1" data-role="footer" data-id="foo1" data-position="fixed">

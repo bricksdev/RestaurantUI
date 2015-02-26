@@ -6,14 +6,17 @@
  * User: pwalczys Date: 9/7/12 Time: 3:50 PM
  */
 
-define([ 'jquery', 'underscore', 'Backbone','./ServiceView', './HomeView','./CountView','./UserinfoView',
-		"../models/Session", 'text!../../templates/ServiceView.html' ], 
-		function($, _, Backbone, ServiceView, HomeView, CountView, UserinfoView,  Session, ServiceTemplate) {
-
+define(["require", 'jquery', 'underscore', 'Backbone','./ServiceView', './CountView','./UserinfoView',
+		"../models/Session", 'text!templates/ServiceView.html' ], 
+		function(require,$, _, Backbone, ServiceView,  CountView, UserinfoView,  Session, ServiceTemplate) {
+	
 	var ServiceView = Backbone.View.extend({
-
+		homeView: function(home){
+			this.HomeView = home;
+		},
+		HomeView:{},
 		initialize : function() {
-
+			
 			$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 
 				// 跨域訪問設定
@@ -79,7 +82,7 @@ define([ 'jquery', 'underscore', 'Backbone','./ServiceView', './HomeView','./Cou
 
 		btnHome_clickHandler:function (event) {
 			
-			$.mobile.jqmNavigator.popView();
+			$.mobile.jqmNavigator.pushView(this.HomeView);
         },
         btnCount_clickHandler:function (event) {
         	
