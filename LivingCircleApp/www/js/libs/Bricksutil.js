@@ -5,8 +5,9 @@ define(["alertify"], function( Alertify ) {
     return {
         openLinkExternal: openLinkExternal,
         openFileExternal: openFileExternal,
-        displayMessage: displayMessage
-    }
+        displayMessage: displayMessage,
+        debug:debugMessage
+    };
     
     //Open external link on a new browser window and for phonegap app, open in Phonegap inappbrowser
     function openLinkExternal (targetURL) {
@@ -52,6 +53,16 @@ define(["alertify"], function( Alertify ) {
             Alertify.success(alertMessage, 3000);
         }
 
+    }
+    
+    function debugMessage(message){
+    	if(!window.env){
+    		console.log(message);
+    		return ;
+    	}
+    	if(window.env.debug){
+    		console.log(message);
+    	}
     }
 
 } );

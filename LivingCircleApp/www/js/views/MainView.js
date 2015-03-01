@@ -6,30 +6,24 @@
  * Time: 11:36 AM
  */
 
-define(['jquery', 'underscore', 'Backbone','./LoginView',"../models/Session", 'text!../../templates/MainView.html'],
-    function ($, _, Backbone, LoginView, Session, MainTemplate) {
-
+define(['jquery', 'underscore', 'Backbone','text!../../templates/MainView.html'],
+    function ($, _, Backbone,   MainTemplate) {
+		
         var MainView = Backbone.View.extend({
-
+        	
             opportunitiesListItems:null,
 
             forcetkClient:null,
-
+            
             events:{
-                'pageshow':'this_pageshowHandler',
-                'click a.btnPlus':'li_clickHandler',
-                'click #btnRefresh':'btnRefresh_clickHandler',
-             
-                'click #btnHome':'btnHome_clickHandler',
-                'click #btnCount':'btnCount_clickHandler',
-                'click #btnService':'btnService_clickHandler',
-                'click #btnUser':'btnUser_clickHandler',
-                'click #btnlogin':'btnLogin_clickHandler'
+          
+                'click #btnRefresh':'btnRefresh_clickHandler'
+   
             },
 
             initialize:function (options) {
 
-
+            	
             },
 
             render:function () {
@@ -44,12 +38,9 @@ define(['jquery', 'underscore', 'Backbone','./LoginView',"../models/Session", 't
             btnRefresh_clickHandler:function (event) {
                 // Loading opportunities
                 this.loadOpportunities();
-            },
-
-            btnLogin_clickHandler:function (event) {
-                //$.mobile.loading();
-                $.mobile.jqmNavigator.pushView(new LoginView());
             }
+
+      
 
         });
 

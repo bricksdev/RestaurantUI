@@ -3,48 +3,47 @@ define([
   'Backbone'
 ], function(_, Backbone) {
   var SessionModel = Backbone.Model.extend({
-  
-//    urlRoot: 'http://localhost:8099/users/session',
-    initialize: function () {
-      var that = this;
-      this.defaultUrl = "http://localhost:8099/users";
-      // Hook into jquery
-      // Use withCredentials to send the server cookies
-      // The server must allow this through response headers
-      $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-          // 跨域訪問設定
-          options.crossDomain = {
-              crossDomain: true
-          };
-          options.xhrFields = {
-              withCredentials: true
-          };
+	  defaults: {
+	      auth: false
+	    },
+	action:"/session",
+    initialize: function (options) {
+    	var that = this;
+    	// jquery cross request
+    	$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    		// 跨域訪問設定
+    		options.crossDomain = {
+    			crossDomain : true
+    		};
+    		options.xhrFields = {
+    			withCredentials : true
+    		};
+    		
+            // If we have a csrf token send it through with the next request
+            if(typeof that.get('_csrf') !== 'undefined') {
+              jqXHR.setRequestHeader('X-CSRF-Token', that.get('_csrf'));
+            }
+    	});
 
-        // If we have a csrf token send it through with the next request
-        if(typeof that.get('_csrf') !== 'undefined') {
-          jqXHR.setRequestHeader('X-CSRF-Token', that.get('_csrf'));
-        }
-      });
     },
-    getUrl:function(action){
-    	return this.defaultUrl + action;
+    url : function(){
+    	
+    	return "http://localhost:8099/users" + this.action;
     },
     register: function(creds, callback) {
-        this.urlRoot=this.getUrl("/reg");
+    	this.action= "/reg";
         // Do a POST to /session and send the serialized form creds
-        this.save(creds, {
+        this.create( creds, {
            success: callback
         });
       },
     login: function(creds, callback) {
-      this.urlRoot=this.getUrl("/login");
+    	this.action="/login";
       // Do a POST to /session and send the serialized form creds
-      this.save(creds, {
-         success: callback
-      });
+    	this.save(creds, {success:callback});
     },
     logout: function() {
-        this.urlRoot=this.getUrl("/logout");
+    	this.action= "/logout";
       // Do a DELETE to /session and clear the clientside data
       var that = this;
       this.destroy({
@@ -59,8 +58,9 @@ define([
         }
       });      
     },
+
     getAuth: function(callback) {
-    	this.urlRoot= this.getUrl("/session");
+    	
       // getAuth is wrapped around our router
       // before we start any routers let us see if the user is valid
       this.fetch({

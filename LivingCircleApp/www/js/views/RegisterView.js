@@ -14,28 +14,10 @@ define([ 'jquery', 'underscore', 'Backbone', './LoginView', './HomeView','./Regi
 
 		initialize : function() {
 
-			$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-
-				// 跨域訪問設定
-				options.crossDomain = {
-					crossDomain : true
-				};
-				options.xhrFields = {
-					withCredentials : true
-				};
-				// console.log(options.url);
-				// Your server goes below
-				// options.url = 'http://localhost:8099' + options.url;
-				// options.url = 'http://cross-domain.nodejitsu.com' +
-				// options.url;
-			});
-
 		},
 		events : {
-			// 'pageshow':'this_pageshowHandler',
-		
-			'click #btnRegister' : 'btnRegister_clickHandler',
-			'click #btnBack' : 'btnBack_clickHandler'
+
+			'click #btnRegister' : 'btnRegister_clickHandler'
 		},
 		
 		render : function() {
@@ -52,17 +34,16 @@ define([ 'jquery', 'underscore', 'Backbone', './LoginView', './HomeView','./Regi
 				nicky : this.$('#nicky').val()
 			}, function() {
 				if (Session.get("auth")) {
-					$.mobile.jqmNavigator.pushView(new HomeView());
+					Bricksutil.displayMessage("SUCCESS",response.message);
+					// page change
+					if(event.currentTarget){
+						window.location.href = event.currentTarget.hash;
+					}
 				}
 
 			});
 
-			// $.mobile.jqmNavigator.pushView(new MainView());
 
-		},
-
-		btnBack_clickHandler : function() {
-			$.mobile.jqmNavigator.popView();
 		}
 
 	});
