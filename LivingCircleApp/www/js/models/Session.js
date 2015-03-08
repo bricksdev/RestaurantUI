@@ -9,21 +9,7 @@ define([
 	action:"/session",
     initialize: function (options) {
     	var that = this;
-    	// jquery cross request
-    	$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-    		// 跨域訪問設定
-    		options.crossDomain = {
-    			crossDomain : true
-    		};
-    		options.xhrFields = {
-    			withCredentials : true
-    		};
-    		
-            // If we have a csrf token send it through with the next request
-            if(typeof that.get('_csrf') !== 'undefined') {
-              jqXHR.setRequestHeader('X-CSRF-Token', that.get('_csrf'));
-            }
-    	});
+
 
     },
     url : function(){

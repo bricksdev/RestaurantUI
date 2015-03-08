@@ -1,143 +1,115 @@
 /**
- * Created by Piotr Walczyszyn (outof.me |
+ * Created by kete jiang (szldkj.net|
  * 
- * @pwalczyszyn)
+ * @kete2003)
  * 
- * User: pwalczys Date: 9/7/12 Time: 3:50 PM
+ * User: kete Date: 2015-3-8 
  */
 
-define([ 'jquery', 'underscore', 'Backbone', "Bricksutil",
-		"../models/Product", 'text!templates/ProductsView.html' ],
-		function($, _, Backbone, Bricksutil, Product, ProductTemplate) {
+define([ 'jquery', 'underscore', 'Backbone', "Bricksutil", "js/models/Product",
+		'text!templates/ProductsView.html' ], function($, _, Backbone,
+		Bricksutil, Product, ProductTemplate) {
 
-			var ProductView = Backbone.View.extend({
+	var ProductView = Backbone.View.extend({
 
-				initialize : function() {
+		initialize : function() {
 
-					$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 
-						// 跨域訪問設定
-						options.crossDomain = {
-							crossDomain : true
-						};
-						options.xhrFields = {
-							withCredentials : true
-						};
-						// console.log(options.url);
-						// Your server goes below
-						// options.url = 'http://localhost:8099' + options.url;
-						// options.url = 'http://cross-domain.nodejitsu.com' +
-						// options.url;
-					});
+		},
+		events : {
+			
+			'click #btnSave' : 'btnSave_clickHandler',
+			'change #files' : 'files_changeHandler'
+		},
 
-				},
-				events : {
-					// 'pageshow':'this_pageshowHandler',
-					'click #btnSave' : 'btnSave_clickHandler',
-					'change #files' : 'files_changeHandler',
-					'click #btnBack' : 'btnBack_clickHandler'
-				},
+		render : function() {
+			this.$el.html(ProductTemplate);
+			return this;
+		},
 
-				render : function() {
-					this.$el.html(ProductTemplate);
-					return this;
-				},
+		files_changeHandler : function(event) {
+			this.imagePreview($.mobile.browser, event.currentTarget, "image");
+		},
+		imagePreview : function(browser, file, prefix) {
 
-				files_changeHandler : function(event) {
-					this.imagePreview($.mobile.browser, event.currentTarget,
-							"image");
-				},
-				imagePreview : function(browser, file, prefix) {
+			if (browser.msie) {// 判断是否为ie浏览器
 
-					if (browser.msie) {// 判断是否为ie浏览器
+				$("#" + prefix + "img" + 0).attr("src", $(file).val());
+				$("#" + prefix + "popup" + 0).attr("src", $(file).val());
+				$("#" + prefix + "a" + 0).css("display", "block");
+			} else {// 不是IE浏览器
 
-						$("#" + prefix + "img" + 0).attr("src", $(file).val());
-						$("#" + prefix + "popup" + 0)
-								.attr("src", $(file).val());
-						$("#" + prefix + "a" + 0).css("display", "block");
-					} else {// 不是IE浏览器
-
-						$.each(file.files, function(fl) {
-							this.createUrl = function(file) {
-								var url = null;
-								if (window.createObjectURL != undefined) { // basic
-									url = window.createObjectURL(file);
-								} else if (window.URL != undefined) { // mozilla(firefox)
-									url = window.URL.createObjectURL(file);
-								} else if (window.webkitURL != undefined) { // webkit
-																			// or
-									// chrome
-									url = window.webkitURL
-											.createObjectURL(file);
-								}
-								return url;
-							};
-							console.log(fl);
-							var objUrl = this.createUrl(file.files[fl]);
-							console.log("objUrl=" + objUrl);
-							if (objUrl) {
-								$("#" + prefix + "img" + fl)
-										.attr("src", objUrl);
-								$("#" + prefix + "popup" + fl).attr("src",
-										objUrl);
-								$("#" + prefix + "a" + fl).css("display",
-										"block");
-							}
-						});
-
-					}
-				},
-
-				btnSave_clickHandler : function(event) {
-
-					// console.log(this.$('#files'));
-					// var fb = new FormData();
-					// fb.append("formFile",this.$('#files'));
-					// console.log(fb);
-					// var options = {
-					// target: '#output2', // target element(s) to be updated
-					// with server response
-					// beforeSubmit: showRequest, // pre-submit callback
-					// success: showResponse // post-submit callback
-
-					// other available options:
-					// url: url // override for form's 'action' attribute
-					// type: type // 'get' or 'post', override for form's
-					// 'method' attribute
-					// dataType: null // 'xml', 'script', or 'json' (expected
-					// server response type)
-					// clearForm: true // clear all form fields after successful
-					// submit
-					// resetForm: true // reset the form after successful submit
-
-					// $.ajax options can be used here too, for example:
-					// timeout: 3000
-					// };
-					var options = {
-						url : Product.upUrl(),
-						dataType : "json",
-						success : function(response, statusText, xhr, $form) {
-
-							console.log(response);
-							if (response.success) {
-								Bricksutil.displayMessage("SUCCESS",
-										response.message)
-								$.mobile.jqmNavigator.popView();
-							} else {
-								Bricksutil.displayMessage("ERROR",
-										response.message)
-							}
+				$.each(file.files, function(fl) {
+					this.createUrl = function(file) {
+						var url = null;
+						if (window.createObjectURL != undefined) { // basic
+							url = window.createObjectURL(file);
+						} else if (window.URL != undefined) { // mozilla(firefox)
+							url = window.URL.createObjectURL(file);
+						} else if (window.webkitURL != undefined) { // webkit
+							// or
+							// chrome
+							url = window.webkitURL.createObjectURL(file);
 						}
+						return url;
 					};
-					this.$('#formFile').ajaxSubmit(options);
+					console.log(fl);
+					var objUrl = this.createUrl(file.files[fl]);
+					console.log("objUrl=" + objUrl);
+					if (objUrl) {
+						$("#" + prefix + "img" + fl).attr("src", objUrl);
+						$("#" + prefix + "popup" + fl).attr("src", objUrl);
+						$("#" + prefix + "a" + fl).css("display", "block");
+					}
+				});
 
-				},
+			}
+		},
 
-				btnBack_clickHandler : function() {
-					$.mobile.jqmNavigator.popView();
+		btnSave_clickHandler : function(event) {
+
+			// console.log(this.$('#files'));
+			// var fb = new FormData();
+			// fb.append("formFile",this.$('#files'));
+			// console.log(fb);
+			// var options = {
+			// target: '#output2', // target element(s) to be updated
+			// with server response
+			// beforeSubmit: showRequest, // pre-submit callback
+			// success: showResponse // post-submit callback
+
+			// other available options:
+			// url: url // override for form's 'action' attribute
+			// type: type // 'get' or 'post', override for form's
+			// 'method' attribute
+			// dataType: null // 'xml', 'script', or 'json' (expected
+			// server response type)
+			// clearForm: true // clear all form fields after successful
+			// submit
+			// resetForm: true // reset the form after successful submit
+
+			// $.ajax options can be used here too, for example:
+			// timeout: 3000
+			// };
+			var options = {
+				url : Product.upUrl(),
+				dataType : "json",
+				success : function(response, statusText, xhr, $form) {
+
+//					console.log(response);
+					if (response.success) {
+						Bricksutil.displayMessage("SUCCESS", response.message)
+						window.location.href = "#home";
+					} else {
+						Bricksutil.displayMessage("ERROR", response.message)
+					}
 				}
+			};
+			this.$('#formFile').ajaxSubmit(options);
 
-			});
+		}
 
-			return ProductView;
-		});
+	});
+
+	return ProductView;
+});

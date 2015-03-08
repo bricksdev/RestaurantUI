@@ -1,7 +1,7 @@
 /**
- * Created by Piotr Walczyszyn (outof.me | @pwalczyszyn)
+ * Created by kete jiang (szldkj.net| @kete2003)
  *
- * User: pwalczys
+ * User: kete
  * Date: 8/9/12
  * Time: 11:36 AM
  */

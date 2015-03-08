@@ -1,9 +1,9 @@
 /**
- * Created by Piotr Walczyszyn (outof.me |
+ * Created by kete jiang (szldkj.net|
  * 
- * @pwalczyszyn)
+ * @kete2003)
  * 
- * User: pwalczys Date: 9/7/12 Time: 3:50 PM
+ * User: kete Date: 2015-3-8 
  */
 
 define(['jquery', 'underscore', 'Backbone', 'text!templates/ServiceView.html' ], 

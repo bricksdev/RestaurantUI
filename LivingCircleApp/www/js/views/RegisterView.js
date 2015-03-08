@@ -1,14 +1,14 @@
 /**
- * Created by Piotr Walczyszyn (outof.me |
+ * Created by kete jiang (szldkj.net|
  * 
- * @pwalczyszyn)
+ * @kete2003)
  * 
- * User: pwalczys Date: 9/7/12 Time: 3:50 PM
+ * User: kete Date: 2015-3-8 
  */
 
-define([ 'jquery', 'underscore', 'Backbone', './LoginView', './HomeView','./RegisterView',
-		"../models/Session", 'text!../../templates/RegisterView.html' ], 
-		function($, _, Backbone, LoginView, HomeView, RegisterView, Session, RegisterTemplate) {
+define([ 'jquery', 'underscore', 'Backbone', 
+		"js/models/Session", 'text!templates/RegisterView.html' ], 
+		function($, _, Backbone, Session, RegisterTemplate) {
 
 	var RegisterView = Backbone.View.extend({
 
@@ -36,9 +36,9 @@ define([ 'jquery', 'underscore', 'Backbone', './LoginView', './HomeView','./Regi
 				if (Session.get("auth")) {
 					Bricksutil.displayMessage("SUCCESS",response.message);
 					// page change
-					if(event.currentTarget){
-						window.location.href = event.currentTarget.hash;
-					}
+					
+					window.location.href = event.currentTarget.hash;
+					
 				}
 
 			});

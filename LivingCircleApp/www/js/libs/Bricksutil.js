@@ -1,12 +1,13 @@
 
 // Includes file dependencies
-define(["alertify"], function( Alertify ) {
+define(['jquery', 'underscore',"alertify"], function( $, _,Alertify ) {
 
     return {
         openLinkExternal: openLinkExternal,
         openFileExternal: openFileExternal,
         displayMessage: displayMessage,
-        debug:debugMessage
+        debug:debugMessage,
+        append:appendView
     };
     
     //Open external link on a new browser window and for phonegap app, open in Phonegap inappbrowser
@@ -64,5 +65,24 @@ define(["alertify"], function( Alertify ) {
     		console.log(message);
     	}
     }
+    
+    function appendView(container, selector, view) {
+		var selectors;
+
+		if (_.isObject(selector)) {
+			selectors = selector;
+		} else {
+			selectors = {};
+			selectors[selector] = view;
+		}
+
+		if (!selectors)
+			return;
+
+		_.each(selectors, function(view, selector) {
+			view.setElement(container.$(selector)).render();
+		}, container);
+	}
+
 
 } );

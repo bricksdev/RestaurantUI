@@ -1,7 +1,7 @@
 /**
- * Created by Piotr Walczyszyn (outof.me | @pwalczyszyn)
+ * Created by kete jiang (szldkj.net| @kete2003)
  *
- * User: pwalczys
+ * User: kete
  * Date: 8/28/12
  * Time: 2:32 PM
  */
@@ -34,7 +34,7 @@ define(['jquery', 'underscore', 'Backbone', 'text!templates/ProductItemsView.htm
             },
 
             render:function () {
-                console.log(this.data);
+//                console.log(this.data);
             	var viewData = {data:this.data};
             	var template = _.template(ProductItmesTemplate);
                 // Rendering list item element content based on a template
