@@ -26,8 +26,8 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 			// 设定请求的token
 			Session.getAuth(function(collection, response){
 				console.log("client access role check.");
-				window.session = Session;
-				console.log(window.session);
+//				window.session = Session;
+//				console.log(window.session);
 				
 			});
 			

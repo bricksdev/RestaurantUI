@@ -29,7 +29,14 @@ define([ 'jquery', 'underscore', 'Backbone', 'Bricksutil',
 		btnSave_clickHandler : function() {
 			
 			var flag = $('#savedFlag').checked;
-
+			
+			if(flag){
+			 localStorage.setItem('user_info', {
+				 username:this.$('#username').val(),
+				 password:this.$('#password').val(),
+				 saveFlag:this.$('#saveFlag').checked
+			 });
+			}
 			Session.login({
 				username : $('#username').val(),
 				password : $('#password').val(),
@@ -39,18 +46,11 @@ define([ 'jquery', 'underscore', 'Backbone', 'Bricksutil',
 				if (response.auth) {
 					Bricksutil.displayMessage("SUCCESS",response.message);
 					
-					
-					if(flag){
-					 localStorage.setItem('user_info', {
-						 username:this.$('#username').val(),
-						 password:this.$('#password').val(),
-						 saveFlag:this.$('#saveFlag').checked
-					 });
-					}
 					// page change
-					if(event.currentTarget){
-						window.location.href = "#home";
-					}
+					window.location.href = "#home";
+					
+				}else{
+					Bricksutil.displayMessage("ERROR",response.message);
 				}
 
 			});

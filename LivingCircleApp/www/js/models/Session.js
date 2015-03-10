@@ -9,7 +9,7 @@ define([
 	action:"/session",
     initialize: function (options) {
     	var that = this;
-
+    	window._token_s=that;
 
     },
     url : function(){

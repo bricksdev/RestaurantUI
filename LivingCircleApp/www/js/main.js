@@ -11,7 +11,7 @@ require.config({
         // RequireJS plugin
         text:'js/libs/text-0.27.0.min',
         // RequireJS plugin
-        domReady:'js/libs/require/domReady',
+//        domReady:'js/libs/require/domReady',
         // underscore library
         underscore:'js/libs/underscore-min',
         // jQuery
@@ -20,12 +20,15 @@ require.config({
         Backbone:'js/libs/backbone-min',
         // jQueryform
         jqueryform:"js/libs/jquery.form.min",
+        jquerymobile:'js/libs/jquery.mobile-1.4.5.min',
+        // js date
+//        jqmdate:"js/libs/datebox/jqm-datebox.core",
+//        jqmdateslide:"js/libs/datebox/jqm-datebox.mode.slidebox",
+        datepicker:"js/libs/jquery.mobile.datepicker",
         // js date ui
         datepickerui:'js/libs/jquery.ui.datepicker',
-        // js date
-        datepicker:"js/libs/jquery.mobile.datepicker",
         // jQuery Mobile framework
-        jquerymobile:'js/libs/jquery.mobile-1.4.5.min',
+        
         // jQuery Mobile plugin for Backbone views navigation
 //        jqmRouter:'js/libs/jquery.mobile/jquery.mobile.router',
         // mobile scrolling polyfill
@@ -47,10 +50,15 @@ require.config({
             exports:'_'
         },
         jquerymobile:{
-            deps:['jquery',"jqueryform"]
+            deps:['jquery',"jqueryform"],
+        	exports:"jquerymobile"
+        },
+        datepickerui:{
+        	deps:["jquery","jquerymobile"],
+        	exports:"datepickerui"
         },
         datepicker:{
-        	deps:["jquery","datepickerui"],
+        	deps:["jquery","jquerymobile"],
         	exports:"datepicker"
         }
 
@@ -74,10 +82,10 @@ require(['jquery', 'underscore',"Backbone", "js/App"],
 		};
 		//console.log(options);
         // If we have a csrf token send it through with the next request
-        if(typeof window.session !== 'undefined') {
+        if(typeof window._token_s !== 'undefined') {
         	
 			//console.log(window.session);
-          jqXHR.setRequestHeader('X-CSRF-Token', window.session.get('_csrf'));
+          jqXHR.setRequestHeader('X-CSRF-Token', window._token_s.get('_csrf'));
         }
 	});
 	$(document).bind("mobileinit", function() {
@@ -94,7 +102,7 @@ require(['jquery', 'underscore',"Backbone", "js/App"],
 		});
 	});
 	
-	require(['jquerymobile',"datepicker"], function($$) {
+	require(['jquerymobile',"datepicker","datepickerui"], function($$) {
 		// The "app" dependency is passed in as "App"
 		App.start();
 	});
