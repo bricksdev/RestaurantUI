@@ -6,9 +6,9 @@
  * User: kete Date: 2015-3-8 
  */
 
-define([ 'jquery', 'underscore', 'Backbone', 
+define([ 'jquery', 'underscore', 'Backbone', "Bricksutil",
 		"js/models/Session", 'text!templates/RegisterView.html' ], 
-		function($, _, Backbone, Session, RegisterTemplate) {
+		function($, _, Backbone, Bricksutil,Session, RegisterTemplate) {
 
 	var RegisterView = Backbone.View.extend({
 
@@ -32,13 +32,18 @@ define([ 'jquery', 'underscore', 'Backbone',
 				password : this.$('#password').val(),
 				repassword : this.$('#repassword').val(),
 				nicky : this.$('#nicky').val()
-			}, function() {
-				if (Session.get("auth")) {
+			}, function(collection, response) {
+				if (response.auth) {
 					Bricksutil.displayMessage("SUCCESS",response.message);
 					// page change
 					
-					window.location.href = event.currentTarget.hash;
+					window.location.href = "#home";
 					
+				}else{
+					Bricksutil.displayMessage("ERROR",response.error);
+					// page change
+					
+					window.location.href = "#";
 				}
 
 			});

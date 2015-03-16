@@ -24,6 +24,7 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil",
 
 			this.productListItems = [];
 			this.renderDatas();
+			
 		},
 		productListItems:null,
 		renderDatas : function() {
@@ -43,7 +44,7 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil",
 					
                     this.$('#productItems').html(_.pluck(that.productListItems, 'el')).listview("refresh");
                
-					 
+                    
 					Bricksutil.displayMessage("SUCCESS", "加载数据成功");
 					
 				} else {
@@ -63,6 +64,7 @@ define([ 'jquery', 'underscore', 'Backbone', "Bricksutil",
 		addSpecialClass:function(){
 			
 			$("#btnHome").addClass("ui-btn-active");
+			
 		}
 
 	});

@@ -9,7 +9,7 @@ define([
 	action:"/session",
     initialize: function (options) {
     	var that = this;
-    	window._token_s=that;
+//    	window._token_s=that;
 
     },
     url : function(){
@@ -19,7 +19,7 @@ define([
     register: function(creds, callback) {
     	this.action= "/reg";
         // Do a POST to /session and send the serialized form creds
-        this.create( creds, {
+        this.save( creds, {
            success: callback
         });
       },

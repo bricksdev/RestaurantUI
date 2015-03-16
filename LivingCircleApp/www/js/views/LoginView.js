@@ -50,7 +50,8 @@ define([ 'jquery', 'underscore', 'Backbone', 'Bricksutil',
 					window.location.href = "#home";
 					
 				}else{
-					Bricksutil.displayMessage("ERROR",response.message);
+					Bricksutil.displayMessage("ERROR",response.error);
+					window.location.href = "#";
 				}
 
 			});

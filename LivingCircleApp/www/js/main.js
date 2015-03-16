@@ -70,7 +70,9 @@ require.config({
 require(['jquery', 'underscore',"Backbone", "js/App"],
     function ($,_, Backbone, App) {
 	// init system run debug env 
-	window.env = window.env || {debug:false}; 
+	window.env = window.env || {debug:true}; 
+	$.support.cors = true;
+	
 	// jquery cross request
 	$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 		// 跨域訪問設定
@@ -82,10 +84,10 @@ require(['jquery', 'underscore',"Backbone", "js/App"],
 		};
 		//console.log(options);
         // If we have a csrf token send it through with the next request
-        if(typeof window._token_s !== 'undefined') {
+        if(localStorage.getItem("_token_s")) {
         	
 			//console.log(window.session);
-          jqXHR.setRequestHeader('X-CSRF-Token', window._token_s.get('_csrf'));
+          jqXHR.setRequestHeader('X-CSRF-Token', localStorage.getItem("_token_s"));
         }
 	});
 	$(document).bind("mobileinit", function() {
@@ -95,6 +97,7 @@ require(['jquery', 'underscore',"Backbone", "js/App"],
 		$.mobile.hashListeningEnabled = false;
 		$.mobile.pushStateEnabled = false;
 		$.mobile.defaultPageTransition = "none";
+		$.mobile.allowCrossDomainPages=true;
 		// Remove page from DOM when it's being replaced
 		$(":jqmData(role='page')").live('pagehide', function(event, ui) {
 //			console.log("page detach");
@@ -103,6 +106,7 @@ require(['jquery', 'underscore',"Backbone", "js/App"],
 	});
 	
 	require(['jquerymobile',"datepicker","datepickerui"], function($$) {
+		
 		// The "app" dependency is passed in as "App"
 		App.start();
 	});

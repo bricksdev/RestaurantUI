@@ -8,7 +8,7 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 	var Router = Backbone.Router.extend({
 		routes : {
 			"" : "defaults",
-			":page" : "generic"
+			":page" : "actions"
 		},
 
 		// last argument must always be the Application
@@ -22,27 +22,36 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 		},
 		defaults : function() {
 			Bricksutil.debug("View defaults");
-			
+			var that = this;
 			// 设定请求的token
 			Session.getAuth(function(collection, response){
 				console.log("client access role check.");
 //				window.session = Session;
 //				console.log(window.session);
+//				window._token_s=response;
+				localStorage.setItem("_token_s",response._csrf);
 				
+				if(response.auth){
+					that.changePage(new App.Views["home"], "home");
+				}else{
+					that.changePage(new App.Views["main"], "main");
+				}
 			});
 			
 			// Retrieve the first view
-			for (var view in App.Views) {
-				// 验证是否登录过
-				if(Session.get("auth") && view != "home"){
-					continue;
-				}
-				Bricksutil.debug("View : "+view);
-				this.changePage(new App.Views[view], view);
-				return;
-			}
+//			for (var view in App.Views) {
+//				Bricksutil.debug("auth check ",view);
+//				// 验证是否登录过
+//				if(Session.get("auth") && (view !== "home" || !view)){
+//					Bricksutil.debug("auth check ",Session);
+//					continue;
+//				}
+//				Bricksutil.debug("View : "+view);
+//				this.changePage(new App.Views[view], view);
+//				return;
+//			}
 		},
-		generic : function(id) {
+		actions : function(id) {
 			Bricksutil.debug("View generic id : "+id);
 			for (var view in App.Views) {
 				if (view.toLowerCase() === id.toLowerCase()) {
@@ -78,7 +87,7 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 
 			}
 			$.mobile.changePage(page.$el, {
-				changeHash : false,
+				changeHash : true,
 				transition : transition,
 				reverse : reverse
 			});
