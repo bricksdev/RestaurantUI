@@ -1,13 +1,13 @@
-define([
+define(["jquery",
   'underscore',
   'Backbone'
-], function(_, Backbone) {
+], function($,_, Backbone) {
   var ProductModel = Backbone.Model.extend({
   
 //    urlRoot: 'http://localhost:8099/users/session',
     initialize: function () {
       var that = this;
-      this.defaultUrl = "http://localhost:8099/product";
+      this.defaultUrl = $.server.url+"/product";
       // Hook into jquery
       // Use withCredentials to send the server cookies
       // The server must allow this through response headers

@@ -29,7 +29,7 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 //				window.session = Session;
 //				console.log(window.session);
 //				window._token_s=response;
-				localStorage.setItem("_token_s",response._csrf);
+				window._token_s=response._csrf;
 				
 				if(response.auth){
 					that.changePage(new App.Views["home"], "home");

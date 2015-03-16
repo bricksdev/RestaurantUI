@@ -1,7 +1,7 @@
-define([
+define(["jquery",
   'underscore',
   'Backbone'
-], function(_, Backbone) {
+], function($,_, Backbone) {
   var SessionModel = Backbone.Model.extend({
 	  defaults: {
 	      auth: false
@@ -14,7 +14,7 @@ define([
     },
     url : function(){
     	
-    	return "http://localhost:8099/users" + this.action;
+    	return $.server.url+"/users" + this.action;
     },
     register: function(creds, callback) {
     	this.action= "/reg";

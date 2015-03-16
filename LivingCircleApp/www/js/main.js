@@ -67,11 +67,13 @@ require.config({
     ,urlArgs: "bust=" + (new Date()).getTime()
 });
 
-require(['jquery', 'underscore',"Backbone", "js/App"],
-    function ($,_, Backbone, App) {
+require(['jquery', 'underscore',"Backbone","js/AppConfig", "js/App"],
+    function ($,_, Backbone,config,App) {
+
 	// init system run debug env 
-	window.env = window.env || {debug:true}; 
+//	$.env = $.env || function(){return {debug:true};}; 
 	$.support.cors = true;
+//	$.server = $.server || function(){return {url:"http://localhost:8099"};}; 
 	
 	// jquery cross request
 	$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
@@ -82,12 +84,12 @@ require(['jquery', 'underscore',"Backbone", "js/App"],
 		options.xhrFields = {
 			withCredentials : true
 		};
-		//console.log(options);
+		console.log(localStorage);
         // If we have a csrf token send it through with the next request
-        if(localStorage.getItem("_token_s")) {
+        if(window._token_s) {
         	
 			//console.log(window.session);
-          jqXHR.setRequestHeader('X-CSRF-Token', localStorage.getItem("_token_s"));
+          jqXHR.setRequestHeader('X-CSRF-Token', window._token_s);
         }
 	});
 	$(document).bind("mobileinit", function() {

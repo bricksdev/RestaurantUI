@@ -57,11 +57,11 @@ define(['jquery', 'underscore',"alertify"], function( $, _,Alertify ) {
     }
     
     function debugMessage(message){
-    	if(!window.env){
+    	if(!$.env){
     		console.log(message);
     		return ;
     	}
-    	if(window.env.debug){
+    	if($.env.debug){
     		console.log(message);
     	}
     }
