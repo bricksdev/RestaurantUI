@@ -30,7 +30,7 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 //				console.log(window.session);
 //				window._token_s=response;
 				window._token_s=response._csrf;
-				
+//				console.log(JSON.stringify(arguments) );
 				if(response.auth){
 					that.changePage(new App.Views["home"], "home");
 				}else{
@@ -40,7 +40,7 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 			
 			// Retrieve the first view
 //			for (var view in App.Views) {
-//				Bricksutil.debug("auth check ",view);
+////				Bricksutil.debug("auth check ",view);
 //				// 验证是否登录过
 //				if(Session.get("auth") && (view !== "home" || !view)){
 //					Bricksutil.debug("auth check ",Session);

@@ -1,2 +1,2 @@
-/home/kete/eclipse-workspace/LivingCircleApp/platforms/android/ant-build/AndroidManifest.xml : \
-/home/kete/eclipse-workspace/LivingCircleApp/platforms/android/AndroidManifest.xml \
+/home/kete/lingdong-workspace/RestaurantUI/LivingCircleApp/platforms/android/ant-build/AndroidManifest.xml : \
+/home/kete/lingdong-workspace/RestaurantUI/LivingCircleApp/platforms/android/AndroidManifest.xml \

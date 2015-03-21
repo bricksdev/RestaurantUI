@@ -1,16 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="net.lingdongkj.restaurant" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <name>Restaurant</name>
+    <name>
+Restaurant
+    </name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Hello World LivingCircle App.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="lc@szldkj.net" href="http://szldkj.net">
+            szldkj team
     </author>
-    <content src="index.html" />
+    <content src="index-android.html" />
+    <preference name="useBrowserHistory" value="false" />
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="3.5.0" />
+    <preference name="phonegap-version" value="4.1.2" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
@@ -68,15 +71,10 @@
     <gap:splash gap:platform="ios" height="1024" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
-    <access origin="*" />
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-    </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="FileTransfer">
-        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
-    </feature>
+    <gap:platform name="android" />
+    <access origin="http://127.0.0.1*" />
+    <access origin="http://218.244.135.168" />
+    <access origin="http://life.szldkj.net" />
+    <access launch-external="yes" origin="http://" />
+    <access launch-external="yes" origin=".*" />
 </widget>

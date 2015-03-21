@@ -6,36 +6,39 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="msapplication-tap-highlight" content="no" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/jquery.mobile.min.css">
+<link rel="stylesheet" href="../css/warm-app-theme.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="../css/jquery.mobile.structure.min.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.mobile.min.js"></script>
 </head>
 <body>
 
 
-	<section data-role="page">
-		<header data-role="header">
-			<a href="main.html" data-icon="carat-l" data-iconpos="left">返回</a>
+	<div data-role="page">
+		<header data-role="header" data-position="fixed">
+			<a href="javascript:;" onClick="javascript:history.back(-1);"
+				data-icon="carat-l" data-iconpos="left" data-transition="none">返回</a>
 			<h1>产品发布</h1>
 
 		</header>
 		<div data-role="main">
 			<form>
-				<ul data-role="listview" data-inset="true">
+				<ul data-role="listview">
 					<li class="ui-field-contain"><label for="textinput-disabled">产品名称</label>
 						<input name="textinput-disabled" id="textinput-disabled"
 						placeholder="Text input" value="" type="text"></li>
 					<li class="ui-field-contain"><label for="textinput-disabled">产品描述</label>
 						<textarea cols="40" rows="8" name="textarea" id="textarea"
 							placeholder="Text input"></textarea></li>
-					<li class="ui-field-contain"><label for="textinput-disabled">菜系</label> <select name="select-native-fc" id="select-native-fc">
+					<li class="ui-field-contain"><label for="textinput-disabled">菜系</label>
+						<select name="select-native-fc" id="select-native-fc">
 							<option value="small">粤菜</option>
 							<option value="medium">湘菜</option>
 							<option value="large">川菜</option>
-					</select>
-					</li>
+					</select></li>
 					<li class="ui-field-contain"><label for="textinput-disabled">
-					价格</label> <input name="textinput-disabled" id="textinput-disabled"
+							价格</label> <input name="textinput-disabled" id="textinput-disabled"
 						placeholder="Text input" value="" type="text"></li>
 					<li class="ui-field-contain"><label for="select-native-fc">店
 							铺</label> <select name="select-native-fc" id="select-native-fc">
@@ -66,19 +69,8 @@
 				</ul>
 			</form>
 		</div>
-		<div data-role="footer" data-id="foo1" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="discount.html">折扣推介</a></li>
-					<li><a href="main.html" class="ui-btn-active">产品清单</a></li>
-					<li><a href="count.html">收银台</a></li>
-					<li><a href="userinfo.html">信息中心</a></li>
-				</ul>
-			</div>
-			<!-- /navbar -->
-		</div>
-		<!-- /footer -->
-	</section>
+
+	</div>
 
 
 </body>
