@@ -30,7 +30,7 @@ define(['jquery', 'underscore', 'Backbone',"Bricksutil","js/models/Session"],
 //				console.log(window.session);
 //				window._token_s=response;
 				window._token_s=response._csrf;
-				console.log(JSON.stringify(arguments) );
+//				console.log(JSON.stringify(arguments) );
 				if(response.auth){
 					that.changePage(new App.Views["home"], "home");
 				}else{

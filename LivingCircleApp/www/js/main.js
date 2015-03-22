@@ -62,8 +62,8 @@ require.config({
 		}
 
 	},
-	templates : '../../templates',
-	urlArgs : "bust=" + (new Date()).getTime()
+	templates : '../../templates'
+	,urlArgs : "bust=" + (new Date()).getTime()
 });
 
 require([ 'domReady', 'jquery', 'underscore', "Backbone", "js/AppConfig",
@@ -73,7 +73,7 @@ require([ 'domReady', 'jquery', 'underscore', "Backbone", "js/AppConfig",
 	domReady(function() {
 
 		function onDeviceReady(desktop) {
-			console.log(desktop);
+//			console.log(desktop);
 			// Hiding splash screen when app is loaded
 			if (desktop !== true)
 				cordova.exec(null, null, 'SplashScreen', 'hide', []);
@@ -108,7 +108,7 @@ require([ 'domReady', 'jquery', 'underscore', "Backbone", "js/AppConfig",
 					"mobileinit",
 					function() {
 						// console.log("JQuery mobile routing system disabled");
-						$.mobile.ajaxEnabled = true;
+						$.mobile.ajaxEnabled = false;
 						$.mobile.linkBindingEnabled = false;
 						$.mobile.hashListeningEnabled = false;
 						$.mobile.pushStateEnabled = false;

@@ -72,7 +72,8 @@ Restaurant
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <gap:platform name="android" />
-    <access origin="http://127.0.0.1*"/> 
+    <!-- whitelists is setted local IP (refer to js/AppConfig.js detail information) and remote server ip and domains. -->
+    <access origin="http://192.168.0.102"/> 
     <access  origin="http://218.244.135.168" />
     <access  origin="http://life.szldkj.net" />
     <access launch-external="yes" origin="http://" />

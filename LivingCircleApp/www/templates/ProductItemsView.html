@@ -1,7 +1,7 @@
 <% if(data) { %>
 
 <a href="#" class="btnProductDetail"> 
-	<img src="http://life.szldkj.net/product/images/<%=data.picture && data.picture.length > 0?data.picture[0]:'error'%>"> 
+	<img src="<%=_.server.url%>/product/images/<%=data.picture && data.picture.length > 0?data.picture[0]:'error'%>"> 
 				<span>
 				<%=data.name %>
 				</span> 

@@ -4,7 +4,7 @@
 	<h1>结算</h1>
 
 </header>
-<div data-role="main">
+<div data-role="content" data-role="main">
 
 	<form>
 		<ul data-role="listview" data-split-icon="carat-r">
@@ -69,12 +69,7 @@
 	</form>
 
 </div>
-<div data-role="popup" id="popupOrder" data-overlay-theme="b"
-	data-tolerance="15,15" class="ui-content">
-	<a href="#" data-rel="back"
-		class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
-	<iframe src="order.html" seamless="" height="400" width="350"></iframe>
-</div>
+
 <div id="foo1" data-role="footer" data-id="foo1" data-position="fixed">
 	<div data-role="navbar">
 		<ul>
@@ -87,4 +82,9 @@
 	</div>
 
 </div>
-
+<div data-role="popup" id="popupOrder" data-overlay-theme="b"
+	data-tolerance="15,15" class="ui-content">
+	<a href="#" data-rel="back"
+		class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+	<iframe src="order.html" seamless="" height="400" width="350"></iframe>
+</div>

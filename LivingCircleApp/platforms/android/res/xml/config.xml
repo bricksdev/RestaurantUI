@@ -72,7 +72,7 @@ Restaurant
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <gap:platform name="android" />
-    <access origin="http://127.0.0.1*" />
+    <access origin="http://10.9.68.45" />
     <access origin="http://218.244.135.168" />
     <access origin="http://life.szldkj.net" />
     <access launch-external="yes" origin="http://" />
